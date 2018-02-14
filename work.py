@@ -26,6 +26,14 @@ def zipcodeGrade(zipcode, grade):
         a.append(i)
     return pprint(a)
 
+def score(zipcode, score):
+    results=collection.find({'address.zipcode':zipcode, 'grades.score':{$lt: score}})
+    a=[]
+    for i in results:
+        a.append(i)
+    return pprint(a)
+
 #print boroughSearch('Manhattan')
 #print zipCodeSearch('10017')
-print zipcodeGrade('10017', 'B')
+#print zipcodeGrade('10017', 'B')
+print score('10017', 23)
