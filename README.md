@@ -20,4 +20,4 @@ IMPORT MECHANISM:
 1. Uses urllib2 library to open the JSON file from the link to be read.
 2. .loads turns JSON object into a dictionary.
 3. Creates the database "gaoJsoeW" and collection "population".
-4. Inserts documents into the collection "population".  There is one document for each age; each document contains the age, number of females, number of males, and the total (females + males).
+4. Inserts documents into the collection "population".  There is one document for each age; each document contains the age ("age"), number of females ("females"), number of males ("males"), and the total [females + males] ("total").
