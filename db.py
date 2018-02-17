@@ -42,8 +42,52 @@ def ageSearch(age):
         a.append(i)
     return pprint(a)
 
+#Search for ages where the number of females is less than or equal to the population specified
+def femalePopLessThanEqualTo(population):
+    results=collection.find({"females": {"$lte":population}})
+    a=[]
+    for i in results:
+        a.append(i)
+    return pprint(a)
+
+#Search for ages where the number of males is greater than or equal to the population specified
+def malePopGreaterThanEqualTo(population):
+    results=collection.find({"males": {"$gte":population}})
+    a=[]
+    for i in results:
+        a.append(i)
+    return pprint(a)
+
+#Search for ages where the number of females or the number of males is less than the population specified
+def popLessThan(population):
+    results=collection.find({"$or":[{"males": {"$lt":population}}, {"females":{"$lt":population}}]})
+    a=[]
+    for i in results:
+        a.append(i)
+    return pprint(a)
+
+#Search for total population greater than the population specified at an age greater than or equal to the age specified
+def totalGreaterThanAtAgeGreaterThanEqual(population, age):
+    results=collection.find({"total":{"$gt":population},"age":{"$gte":age}})
+    a=[]
+    for i in results:
+        a.append(i)
+    return pprint(a)
+
 #createDB()
 #Creates database.  Should only call once to avoid duplicate documents.
 
 #Tests ageSearch method
-#ageSearch(1)
+#ageSearch(100)
+
+#Test femalePopLessThanEqualTo method
+#femalePopLessThanEqualTo(51200)
+
+#Test malePopGreaterThanEqualTo method
+#malePopGreaterThanEqualTo(2054000)
+
+#Test popLessThan method
+#popLessThan(64800)
+
+#Test totalGreaterThanAtAgeGreaterThanEqual method
+#totalGreaterThanAtAgeGreaterThanEqual(1000000,76)
